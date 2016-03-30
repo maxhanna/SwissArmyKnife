@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 
 public class SwissArmyKnifeControls{
-
+	String geocodeKey  = "Insert Key Here";
+	String eventfulKey = "Insert Key Here";
+	String wolframKey  = "Insert Key Here";
 	Scanner keyboard;
 	public float getWeather() {
 		URL oracle = null;
@@ -71,7 +73,7 @@ public class SwissArmyKnifeControls{
 		addr = keyboard.nextLine();
 		URL google = null;
 		try {
-			google = new URL("https://maps.googleapis.com/maps/api/geocode/xml?address="+addr+"&key=AIzaSyANH-gRNpDsoei_FXQHEMsCMuXKwc1Iabs");
+			google = new URL("https://maps.googleapis.com/maps/api/geocode/xml?address="+addr+"&key="+geocodeKey);
 			BufferedReader in = new BufferedReader(new InputStreamReader(google.openStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
@@ -102,7 +104,7 @@ public class SwissArmyKnifeControls{
 		System.out.println("current coordinates: " + address);
 		URL google = null;
 		try {
-			google = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/xml?key=AIzaSyANH-gRNpDsoei_FXQHEMsCMuXKwc1Iabs&location="+address+"&radius=400&rankBy=distance&types=accounting|airport|amusement_park|aquarium|art_gallery|atm|bakery|bank|bar&language=en&sensor=false");
+			google = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/xml?key="+geocodeKey+"&location="+address+"&radius=400&rankBy=distance&types=accounting|airport|amusement_park|aquarium|art_gallery|atm|bakery|bank|bar&language=en&sensor=false");
 			BufferedReader in = new BufferedReader(
 					new InputStreamReader(google.openStream()));
 			String inputLine;
@@ -126,7 +128,7 @@ public class SwissArmyKnifeControls{
 		System.out.println("current coordinates: " + address);
 		URL eventful = null;
 		try {
-			eventful = new URL("http://api.eventful.com/rest/events/search?..&app_key=6Cc4TDpPcQGwmXDh&where="+address+"&within=15");
+			eventful = new URL("http://api.eventful.com/rest/events/search?..&app_key="+eventfulKey+"&where="+address+"&within=15");
 			BufferedReader in = new BufferedReader(
 					new InputStreamReader(eventful.openStream()));
 			String inputLine;
@@ -161,7 +163,7 @@ public class SwissArmyKnifeControls{
 		System.out.println("current coordinates: " + address);
 		URL google = null;
 		try {
-			google = new URL("https://maps.googleapis.com/maps/api/directions/xml?origin="+origin+"&destination="+address+"&key=AIzaSyANH-gRNpDsoei_FXQHEMsCMuXKwc1Iabs");
+			google = new URL("https://maps.googleapis.com/maps/api/directions/xml?origin="+origin+"&destination="+address+"&key="+geocodeKey);
 			BufferedReader in = new BufferedReader(
 					new InputStreamReader(google.openStream()));
 			String inputLine;
@@ -196,7 +198,7 @@ public class SwissArmyKnifeControls{
 		System.out.println("Searching for: " + query);
 		URL wolfram = null;
 		try {
-			wolfram = new URL("http://api.wolframalpha.com/v2/query?input="+query+"&appid=28KJV7-V3XXKYT8T5");
+			wolfram = new URL("http://api.wolframalpha.com/v2/query?input="+query+"&appid="+wolframKey);
 			BufferedReader in = new BufferedReader(
 					new InputStreamReader(wolfram.openStream()));
 			String inputLine;
